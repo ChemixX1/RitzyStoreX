@@ -1,0 +1,42 @@
+.app {
+  min-height: 100vh;
+  background: var(--color-bg-primary);
+}
+
+.main-content {
+  padding-top: 0;
+}
+
+section {
+  position: relative;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  letter-spacing: -1px;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+html {
+  scroll-padding-top: 80px;
+}
+.home-fade-in {
+  animation: homeSmoothIn 0.9s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes homeSmoothIn {
+  0% {
+    opacity: 0;
+    filter: blur(6px);
+    transform: scale(1.03);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1);
+  }
+}

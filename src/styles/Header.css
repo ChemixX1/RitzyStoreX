@@ -1,0 +1,88 @@
+/* src/styles/Header.css */
+
+.header {
+  position: absolute !important; /* Obligatorio para que no se mueva */
+  top: 20px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 99999; /* Z-index extremo para estar sobre todo (incluido Hero) */
+  pointer-events: none;
+  transition: top 0.3s ease; /* Suaviza el cambio si giras el celular */
+}
+
+.pill-nav {
+  background: rgba(255, 255, 255, 0.8); 
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 50px;
+  padding: 10px 25px; 
+  display: flex;
+  gap: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  pointer-events: auto;
+  transition: all 0.3s ease;
+}
+
+.pill-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  border-radius: 40px;
+  background: transparent;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #444;
+  cursor: pointer;
+  transition: 0.1s ease;
+  white-space: nowrap;
+}
+
+.nav-icon {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.pill-item:hover {
+  background: #f3f3f3; 
+  color: #444; 
+}
+
+.pill-item.active {
+  background: #000; 
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  font-weight: 500;
+  transform: none; 
+}
+
+.pill-item.active .nav-icon {
+  opacity: 1;
+  color: white;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .header {
+    /* En celular lo bajamos a 40px para que no choque con la cámara */
+    top: 40px !important; 
+    bottom: auto;
+  }
+
+  .pill-nav {
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.9);
+    gap: 5px;
+    transform: scale(0.95); 
+  }
+
+  .pill-item {
+    padding: 8px 12px; 
+    font-size: 0.85rem;
+    gap: 4px;
+  }
+}

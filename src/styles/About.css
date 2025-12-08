@@ -1,0 +1,87 @@
+.brands-marquee {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  position: relative;
+  z-index: 5;
+  margin-top: -10px;
+  background-color:#0f1014;
+;
+}
+
+.marquee-wrapper {
+  position: relative;
+  width: 96%;
+  max-width: 1900px;
+  height: 90px;
+  background: rgb(68, 67, 70);
+  border: 1px solid rgba(255, 255, 255, 0.308);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: scrollInfinite 25s linear infinite; /* Velocidad suave */
+}
+
+.marquee-group {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  padding-right: 4rem;
+}
+
+.brand-image {
+  height: 120px; 
+  width: auto; 
+  object-fit: contain;
+  display: block;
+  margin: -1.5rem;
+}
+
+@keyframes scrollInfinite {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.33%); }
+}
+
+.fade-overlay {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.fade-left {
+  left: 0;
+  background: linear-gradient(to right, #0c0c0c, transparent);
+}
+
+.fade-right {
+  right: 0;
+  background: linear-gradient(to left, #0c0c0c, transparent);
+}
+
+@media (max-width: 768px) {
+  .marquee-wrapper {
+    width: 95%;
+    height: 70px;
+    margin-top: -30px;
+  }
+  
+  .brand-image {
+    height: 80px; 
+  }
+  
+  .marquee-group {
+    gap: 3.5rem;
+    padding-right: 3.5rem;
+  }
+}
