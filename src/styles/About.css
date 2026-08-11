@@ -1,87 +1,70 @@
 .brands-marquee {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem 0;
   position: relative;
   z-index: 5;
-  margin-top: -10px;
-  background-color:#0f1014;
-;
+  padding: 0.45rem 0 2.8rem;
+  overflow: hidden;
+  background: #06040d;
 }
 
-.marquee-wrapper {
+.marquee-window {
   position: relative;
-  width: 96%;
-  max-width: 1900px;
-  height: 90px;
-  background: rgb(68, 67, 70);
-  border: 1px solid rgba(255, 255, 255, 0.308);
-  border-radius: 16px;
+  width: min(1500px, 96%);
+  height: 92px;
+  margin: 0 auto;
   overflow: hidden;
-  display: flex;
-  align-items: center;
+  border-block: 1px solid rgba(255, 255, 255, 0.085);
+  mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
 }
 
 .marquee-track {
-  display: flex;
   width: max-content;
-  animation: scrollInfinite 25s linear infinite; /* Velocidad suave */
-}
-
-.marquee-group {
+  height: 100%;
   display: flex;
   align-items: center;
-  gap: 4rem;
-  padding-right: 4rem;
+  animation: marqueeSlide 28s linear infinite;
+  will-change: transform;
 }
 
-.brand-image {
-  height: 120px; 
-  width: auto; 
-  object-fit: contain;
-  display: block;
-  margin: -1.5rem;
-}
+.marquee-window:hover .marquee-track { animation-play-state: paused; }
 
-@keyframes scrollInfinite {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-33.33%); }
-}
-
-.fade-overlay {
-  position: absolute;
-  top: 0;
+.brand-group {
   height: 100%;
-  width: 100px;
-  z-index: 2;
-  pointer-events: none;
+  display: flex;
+  align-items: center;
+  gap: clamp(0.9rem, 2.2vw, 2rem);
+  padding-right: clamp(0.9rem, 2.2vw, 2rem);
 }
 
-.fade-left {
-  left: 0;
-  background: linear-gradient(to right, #0c0c0c, transparent);
+.brand-chip {
+  width: clamp(112px, 9.3vw, 138px);
+  height: 82px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  background: transparent;
 }
 
-.fade-right {
-  right: 0;
-  background: linear-gradient(to left, #0c0c0c, transparent);
+.brand-chip img {
+  width: min(100%, 126px);
+  height: 68px;
+  object-fit: contain;
+  opacity: 0.82;
+  filter: grayscale(1) saturate(0) brightness(1.8) contrast(1.16);
+  transition: opacity 180ms ease, filter 180ms ease, transform 180ms ease;
 }
 
-@media (max-width: 768px) {
-  .marquee-wrapper {
-    width: 95%;
-    height: 70px;
-    margin-top: -30px;
-  }
-  
-  .brand-image {
-    height: 80px; 
-  }
-  
-  .marquee-group {
-    gap: 3.5rem;
-    padding-right: 3.5rem;
-  }
+.brand-chip:hover img {
+  opacity: 1;
+  filter: grayscale(1) saturate(0) brightness(2.1) contrast(1.25);
+  transform: scale(1.06);
+}
+
+@keyframes marqueeSlide { to { transform: translateX(-50%); } }
+
+@media (max-width: 600px) {
+  .brands-marquee { padding-bottom: 2.2rem; }
+  .marquee-window { width: 100%; height: 78px; }
+  .brand-chip { width: 108px; height: 70px; }
+  .brand-chip img { width: 98px; height: 58px; }
+  .brand-group { gap: 0.75rem; padding-right: 0.75rem; }
 }

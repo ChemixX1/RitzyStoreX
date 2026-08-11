@@ -1,183 +1,163 @@
 export const servicesData = [
   {
     id: 1,
-    name: "Netflix",
-    category: "Streaming",
-    priceStart: "S/ 12.00",
-    logo: "/logos/netflix.png",
-    videoSrc: "/videos/netflix.mp4",
-    description: "El pasaporte VIP al catálogo más grande del mundo. Olvídate de comerciales y disfruta de series y películas en 4K sin interrupciones. Por 12 soles, toma el control total de tu entretenimiento.",
-    options: [
-      { label: "1 Perfil (1 Mes)", price: "S/ 12.00" }
-    ]
+    name: 'Netflix',
+    category: 'Streaming',
+    priceStart: 'S/ 12.00',
+    logo: '/assets/logos/cards/netflix.webp',
+    videoSrc: '/assets/videos/netflix.mp4',
+    description: 'Disfruta series, películas y documentales en alta calidad desde una de las plataformas de entretenimiento más populares del mundo.',
+    options: [{ label: '1 perfil · 1 mes', price: 'S/ 12.00' }],
   },
   {
     id: 2,
-    name: "HBO Max",
-    category: "Streaming",
-    priceStart: "S/ 12.00",
-    logo: "/logos/hbo.png",
-    videoSrc: "/videos/hbo.mp4",
-    description: "La casa de la calidad cinematográfica: Juego de Tronos, Harry Potter y DC. Si buscas historias épicas y estrenos recién salidos del cine, este es tu lugar. Calidad garantizada.",
-    options: [
-      { label: "1 Perfil (1 Mes)", price: "S/ 12.00" }
-    ]
+    name: 'HBO Max',
+    category: 'Streaming',
+    priceStart: 'S/ 12.00',
+    logo: '/assets/logos/cards/hbo.webp',
+    videoSrc: '/assets/videos/hbo.mp4',
+    description: 'Accede a grandes producciones, películas, documentales y series reconocidas en una experiencia de entretenimiento premium.',
+    options: [{ label: '1 perfil · 1 mes', price: 'S/ 12.00' }],
   },
   {
     id: 3,
-    name: "Disney+",
-    category: "Streaming",
-    priceStart: "S/ 12.00",
-    logo: "/logos/disney.png",
-    videoSrc: "/videos/disney.mp4",
-    description: "Nostalgia y adrenalina en un solo lugar: Disney, Pixar, Marvel y Star Wars. La única app que emociona a niños y adultos por igual. Disfruta de tus clásicos y estrenos exclusivos.",
-    options: [
-      { label: "1 Perfil (1 Mes)", price: "S/ 12.00" }
-    ]
+    name: 'Disney+',
+    category: 'Streaming',
+    priceStart: 'S/ 12.00',
+    logo: '/assets/logos/cards/disney.webp',
+    videoSrc: '/assets/videos/disney.mp4',
+    description: 'Encuentra historias de Disney, Pixar, Marvel, Star Wars y mucho más para disfrutar en cualquier momento.',
+    options: [{ label: '1 perfil · 1 mes', price: 'S/ 12.00' }],
   },
   {
     id: 4,
-    name: "Paramount+",
-    category: "Streaming",
-    priceStart: "S/ 12.00",
-    logo: "/logos/paramount.png",
-    videoSrc: "/videos/paramount.mp4",
-    description: "Acción pura y comedia ácida. Desde Misión Imposible hasta Bob Esponja y South Park. Rompe la rutina y descubre joyas exclusivas que no están en la competencia",
-    options: [
-      { label: "1 Perfil (1 Mes)", price: "S/ 12.00" }
-    ]
+    name: 'Paramount+',
+    category: 'Streaming',
+    priceStart: 'S/ 12.00',
+    logo: '/assets/logos/cards/paramount.webp',
+    videoSrc: '/assets/videos/paramount.mp4',
+    description: 'Acción, comedia, clásicos y producciones exclusivas para ampliar tus opciones de entretenimiento.',
+    options: [{ label: '1 perfil · 1 mes', price: 'S/ 12.00' }],
   },
   {
     id: 5,
-    name: "Crunchyroll",
-    category: "Streaming",
-    priceStart: "S/ 10.00",
-    logo: "/logos/crunchyroll.png",
-    videoSrc: "/videos/crunchyroll.mp4",
-    description: "El Olimpo de los Otakus. Disfruta estrenos directos desde Japón en HD y sin anuncios molestos. Honra tu pasión por el anime con el catálogo más grande del mundo.",
-    options: [
-      { label: "1 Perfil (1 Mes)", price: "S/ 10.00" }
-    ]
+    name: 'Crunchyroll',
+    category: 'Streaming',
+    priceStart: 'S/ 10.00',
+    logo: '/assets/logos/cards/crunchyroll.webp',
+    videoSrc: '/assets/videos/crunchyroll.mp4',
+    description: 'Anime en alta calidad, nuevos episodios y un amplio catálogo para quienes disfrutan las mejores historias de Japón.',
+    options: [{ label: '1 perfil · 1 mes', price: 'S/ 10.00' }],
   },
-  
   {
     id: 6,
-    name: "Duolingo Super",
-    category: "Apps",
-    priceStart: "S/ 10.00",
-    logo: "/logos/duolingo.png",
-    videoSrc: "/videos/duolingo.mp4",
-    description: "Aprende idiomas sin límites ni anuncios. Obtén vidas infinitas y práctica personalizada para dominar el inglés o francés mucho más rápido. Invierte en ti.",
-    options: [
-      { label: "1 Perfil (1 Mes)", price: "S/ 10.00" }
-    ]
+    name: 'Duolingo Super',
+    category: 'Apps',
+    priceStart: 'S/ 10.00',
+    logo: '/assets/logos/cards/duolingo.webp',
+    videoSrc: '/assets/videos/duolingo.mp4',
+    description: 'Aprende idiomas sin anuncios y aprovecha funciones adicionales para mantener el ritmo de estudio.',
+    options: [{ label: '1 perfil · 1 mes', price: 'S/ 10.00' }],
   },
   {
     id: 7,
-    name: "CapCut Pro",
-    category: "Apps",
-    priceStart: "S/ 10.00",
-    logo: "/logos/capcut.png", 
-    videoSrc: "", 
-    description: "Edita como viral, no como aficionado. Adiós marca de agua, hola efectos IA y transiciones pro. Tu mejor arma para destacar en TikTok y Reels.",
-    options: [
-      { label: "1 Cuenta Completa", price: "S/ 10.00" }
-    ]
+    name: 'CapCut Pro',
+    category: 'Apps',
+    priceStart: 'S/ 10.00',
+    logo: '/assets/logos/cards/capcut.webp',
+    videoSrc: '',
+    description: 'Edita contenido con herramientas avanzadas, efectos, recursos creativos y funciones impulsadas por inteligencia artificial.',
+    options: [{ label: '1 cuenta completa', price: 'S/ 10.00' }],
   },
   {
     id: 8,
-    name: "Canva Pro",
-    category: "Apps",
-    priceStart: "S/ 10.00",
-    logo: "/logos/canva.png",
-    videoSrc: "",
-    description: "Diseñar feo ya no es excusa. Accede a todo el contenido premium y quita fondos de fotos al instante. Haz que tu marca o tareas brillen sin esfuerzo.",
+    name: 'Canva Pro',
+    category: 'Apps',
+    priceStart: 'S/ 10.00',
+    logo: '/assets/logos/cards/canva.webp',
+    videoSrc: '',
+    description: 'Diseña contenido con recursos premium, plantillas profesionales y herramientas que aceleran tu flujo creativo.',
     options: [
-      { label: "1 Cuenta (1 Mes)", price: "S/ 10.00" },
-      { label: "1 Cuenta (1 Año)", price: "S/ 70.00" }
-    ]
+      { label: '1 cuenta · 1 mes', price: 'S/ 10.00' },
+      { label: '1 cuenta · 1 año', price: 'S/ 70.00' },
+    ],
   },
-
   {
     id: 9,
-    name: "ChatGPT Plus",
-    category: "IA",
-    priceStart: "S/ 25.00",
-    logo: "/logos/chatgpt.png",
-    videoSrc: "/videos/chatgpt.mp4",
-    description: "Tu copiloto genio disponible 24/7. GPT-4 razona mejor, crea imágenes y analiza datos complejos. Deja de trabajar duro y empieza a trabajar inteligente.",
+    name: 'ChatGPT Plus',
+    category: 'IA',
+    priceStart: 'S/ 25.00',
+    logo: '/assets/logos/cards/chatgpt.webp',
+    videoSrc: '/assets/videos/chatgpt.mp4',
+    description: 'Potencia tus ideas, tareas y proyectos con herramientas avanzadas de inteligencia artificial para texto, imágenes y análisis.',
     options: [
-      { label: "1 Cuenta (1 Mes)", price: "S/ 25.00" },
-      { label: "1 Cuenta (1 Año)", price: "S/ 100.00" }
-    ]
+      { label: '1 cuenta · 1 mes', price: 'S/ 25.00' },
+      { label: '1 cuenta · 1 año', price: 'S/ 100.00' },
+    ],
   },
   {
     id: 10,
-    name: "Perplexity AI",
-    category: "IA",
-    priceStart: "S/ 15.00",
-    logo: "/logos/perplexity.png", 
-    videoSrc: "", 
-    description: "Respuestas exactas con fuentes reales, sin abrir mil pestañas. Investiga a profundidad con las mejores IAs del mercado (Claude 3, GPT-4) al instante. Conocimiento puro.",
-    options: [
-      { label: "1 Cuenta (1 Año)", price: "S/ 100.00" }
-    ]
+    name: 'Perplexity AI',
+    category: 'IA',
+    priceStart: 'S/ 15.00',
+    logo: '/assets/logos/cards/perplexity.webp',
+    videoSrc: '',
+    description: 'Investiga con respuestas organizadas y fuentes visibles para encontrar información de forma rápida y eficiente.',
+    options: [{ label: '1 cuenta · 1 año', price: 'S/ 100.00' }],
   },
-
   {
     id: 11,
-    name: "Roblox (Robux)",
-    category: "Gaming",
-    priceStart: "S/ 25.00",
-    logo: "/logos/roblox.png",
-    videoSrc: "/videos/roblox.mp4",
-    description: "No seas un 'noob', flexea con estilo. Compra skins y Game Passes para dominar en Brookhaven o Blox Fruits. Stock disponible para entrega inmediata y segura.",
+    name: 'Roblox · Robux',
+    category: 'Gaming',
+    priceStart: 'S/ 25.00',
+    logo: '/assets/logos/cards/roblox.webp',
+    videoSrc: '/assets/videos/roblox.mp4',
+    description: 'Amplía tu experiencia dentro de Roblox con opciones de Robux para personalizar tu avatar y acceder a contenido del juego.',
     options: [
-      { label: "1k Robux (Vía Grupo)", price: "S/ 25.00" },
-      { label: "1k Robux (Game Pass)", price: "S/ 27.00" }
-    ]
+      { label: '1K Robux · vía grupo', price: 'S/ 25.00' },
+      { label: '1K Robux · Game Pass', price: 'S/ 27.00' },
+    ],
   },
-
   {
     id: 12,
-    name: "Instagram Boost",
-    category: "Social",
-    priceStart: "S/ 12.00",
-    logo: "/logos/instagram.png",
-    videoSrc: "/videos/instagram.mp4",
-    description: "Impulsa tu perfil. *Nota: Garantizamos la llegada de la cantidad pedida para potenciar tus números rápidamente.*",
+    name: 'Instagram Boost',
+    category: 'Social',
+    priceStart: 'S/ 12.00',
+    logo: '/assets/logos/cards/instagram.webp',
+    videoSrc: '/assets/videos/instagram.mp4',
+    description: 'Opciones de alcance para mejorar la visibilidad inicial de tu contenido y reforzar la presencia de tu perfil.',
     options: [
-      { label: "1k Seguidores", price: "S/ 20.00" },
-      { label: "1k Vistas", price: "S/ 12.00" },
-      { label: "1k Likes", price: "S/ 17.00" }
-    ]
+      { label: '1K seguidores', price: 'S/ 20.00' },
+      { label: '1K vistas', price: 'S/ 12.00' },
+      { label: '1K likes', price: 'S/ 17.00' },
+    ],
   },
   {
     id: 13,
-    name: "Facebook Boost",
-    category: "Social",
-    priceStart: "S/ 12.00",
-    logo: "/logos/facebook.png",
-    videoSrc: "/videos/facebook.mp4",
-    description: "Aumenta la popularidad y autoridad de tu página o perfil en tiempo récord.",
+    name: 'Facebook Boost',
+    category: 'Social',
+    priceStart: 'S/ 12.00',
+    logo: '/assets/logos/cards/facebook.webp',
+    videoSrc: '/assets/videos/facebook.mp4',
+    description: 'Mejora la presencia visual de tu página o perfil con opciones flexibles de alcance e interacción.',
     options: [
-      { label: "1k Seguidores", price: "S/ 20.00" },
-      { label: "1k Vistas", price: "S/ 12.00" },
-      { label: "1k Likes", price: "S/ 17.00" }
-    ]
+      { label: '1K seguidores', price: 'S/ 20.00' },
+      { label: '1K vistas', price: 'S/ 12.00' },
+      { label: '1K likes', price: 'S/ 17.00' },
+    ],
   },
   {
     id: 14,
-    name: "TikTok Boost",
-    category: "Social",
-    priceStart: "S/ 12.00",
-    logo: "/logos/tiktok.png",
-    videoSrc: "/videos/tiktok.mp4",
-    description: "Hazte viral aumentando tus números visuales para atraer más audiencia real.",
+    name: 'TikTok Boost',
+    category: 'Social',
+    priceStart: 'S/ 12.00',
+    logo: '/assets/logos/cards/tiktok.webp',
+    videoSrc: '/assets/videos/tiktok.mp4',
+    description: 'Impulsa la visibilidad de tus publicaciones con opciones pensadas para reforzar su alcance inicial.',
     options: [
-      { label: "1k Seguidores", price: "S/ 20.00" },
-      { label: "1k Vistas", price: "S/ 12.00" },
-      { label: "1k Likes", price: "S/ 17.00" }
-    ]
-  }
+      { label: '1K seguidores', price: 'S/ 20.00' },
+      { label: '1K vistas', price: 'S/ 12.00' },
+      { label: '1K likes', price: 'S/ 17.00' },
+    ],
+  },
 ];

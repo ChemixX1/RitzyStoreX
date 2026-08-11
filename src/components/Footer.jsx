@@ -1,94 +1,64 @@
-import React from 'react';
+import { Facebook, Instagram, Send } from 'lucide-react';
+import BrandIcon from './BrandIcon';
 import '../styles/Footer.css';
-import gengarImage from '../assets/logos/gengar2.png'; 
 
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
+const contactLinks = [
+  {
+    label: 'WhatsApp',
+    detail: '+51 955 422 937',
+    href: 'https://wa.me/51955422937?text=Hola%20RitzyStoreX%2C%20quiero%20conocer%20las%20plataformas%20y%20promociones%20disponibles.',
+    icon: BrandIcon,
+  },
+  { label: 'Telegram', detail: '@Ritzytoe', href: 'https://t.me/Ritzytoe', icon: Send },
+  { label: 'Instagram', detail: '@dark_toe', href: 'https://www.instagram.com/dark_toe/', icon: Instagram },
+  { label: 'Facebook', detail: '/darktoe', href: 'https://www.facebook.com/darktoe', icon: Facebook },
+];
 
-  
-  const phone = "51955422937";
-  const textWsp = encodeURIComponent("Hola Ritzy!  Vengo de tu web. ¿Podrías decirme las plataformas con las que cuentas y promos vigentes? Gracias!");
-  const linkWhatsApp = `https://wa.me/${phone}?text=${textWsp}`;
-
-  const userTelegram = "Ritzytoe";
-  const linkTelegram = `https://t.me/${userTelegram}`;
-
+export default function Footer() {
   return (
-    <footer id="contacto" className="footer-compact">
-      
-      <div className="lightning-bg">
-        <svg viewBox="0 0 1440 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M-100 0L200 400" stroke="#a855f7" strokeWidth="1" opacity="0.2"/>
-          <path d="M-50 0L250 400" stroke="#a855f7" strokeWidth="1" opacity="0.1"/>
-          <path d="M1200 0L1300 150L1250 200L1450 400" stroke="#a855f7" strokeWidth="1.5" opacity="0.3"/>
-          <path d="M600 400L700 300" stroke="#a855f7" strokeWidth="1" opacity="0.1"/>
-        </svg>
-      </div>
+    <footer id="contacto" className="site-footer">
+      <div className="footer-glow" aria-hidden="true" />
+      <img className="footer-gengar" src="/assets/branding/gengar-footer.webp" alt="" width="512" height="512" loading="lazy" decoding="async" />
+      <div className="footer-shell">
+        <div className="footer-callout">
+          <div>
+            <h2>¿Listo para mejorar tu experiencia digital?</h2>
+            <p>Escríbeme y encuentra la opción que mejor se adapta a lo que necesitas.</p>
+          </div>
+          <a
+            href="https://wa.me/51955422937?text=Hola%20RitzyStoreX%2C%20quiero%20recibir%20asesoría."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <BrandIcon name="whatsapp" size={19} /> Iniciar conversación
+          </a>
+        </div>
 
-      <div className="gengar-bg-container">
-        <img src={gengarImage} alt="" className="gengar-bg-image" />
-      </div>
+        <div className="footer-main">
+          <div className="footer-brand">
+            <div className="footer-wordmark"><span>Ritzy</span>StoreX</div>
+            <p>Servicios digitales, atención cercana y una experiencia simple de principio a fin.</p>
+            <span className="footer-status"><i /> Disponible para consultas</span>
+          </div>
 
-      <div className="footer-content">
-        <div className="footer-grid">
-          
-          <div className="brand-column">
-            <h3 className="brand-logo">
-              <span className="ritzy-text">Ritzy</span>
-              <span className="store-text">StoreX</span>
-            </h3>
-            <p className="brand-text">
-              Tu aliado digital estratégico. Calidad, discreción y eficiencia asegurada <strong>para potenciar tu vida digital, estas listo?</strong>
-            </p>
-            <div className="status-indicator">
-              <span className="dot"></span> Disponible 24/7
+          <div className="footer-contacts">
+            <p className="footer-column-title">Canales de contacto</p>
+            <div className="contact-grid">
+              {contactLinks.map(({ label, detail, href, icon: Icon }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer">
+                  <span className="contact-icon"><Icon size={18} /></span>
+                  <span><small>{label}</small><strong>{detail}</strong></span>
+                </a>
+              ))}
             </div>
           </div>
-
-          <div className="contact-column">
-            <h4 className="column-title">Contacto Directo</h4>
-            <ul className="social-links">
-              
-              <li>
-                <a href={linkWhatsApp} target="_blank" rel="noopener noreferrer">
-                  <span className="link-text">WhatsApp</span>
-                  <span className="link-handle">+51 955 422 937</span>
-                </a>
-              </li>
-
-              <li>
-                <a href={linkTelegram} target="_blank" rel="noopener noreferrer">
-                  <span className="link-text">Telegram</span>
-                  <span className="link-handle">@Ritzytoe</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="https://www.instagram.com/dark_toe/" target="_blank" rel="noopener noreferrer">
-                  <span className="link-text">Instagram</span>
-                  <span className="link-handle">@dark_toe</span>
-                </a>
-              </li>
-
-              <li>
-                <a href="https://www.facebook.com/darktoe" target="_blank" rel="noopener noreferrer">
-                  <span className="link-text">Facebook</span>
-                  <span className="link-handle">/darktoe</span>
-                </a>
-              </li>
-
-            </ul>
-          </div>
-
         </div>
 
         <div className="footer-bottom">
-          <span>© {currentYear} RitzyStoreX</span>
-          <span className="dev-credit">Dev by Geanfranco Calle 🇵🇪</span>
+          <span>© {new Date().getFullYear()} RitzyStoreX</span>
+          <span>Diseñado y desarrollado por <strong>JOSE MANUEL MEJIA MEDINA</strong></span>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

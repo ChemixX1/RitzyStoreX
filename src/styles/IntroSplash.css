@@ -1,233 +1,99 @@
 .intro-splash {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  
-  /* CAMBIO 1: Aseguramos un negro profundo */
-  background: #000000; 
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
   overflow: hidden;
-  
-  /* CAMBIO 2: Hacemos la transición más lenta (1.2s) para que sea suave */
-  transition: opacity 1.2s ease-in-out, visibility 1.2s;
+  color: #ffffff;
+  background: #000000;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity var(--intro-exit-duration, 450ms) ease,
+    visibility var(--intro-exit-duration, 450ms) ease;
 }
 
-/* ... EL RESTO DEL CSS DÉJALO EXACTAMENTE IGUAL ... */
-
-.background-decorations {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.4;
-}
-
-.grid-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0.4;
-}
-
-.grid-svg {
-  width: 100%;
-  height: 100%;
-}
-
-@keyframes floatIcon {
-  0%, 100% { transform: translateY(0px); opacity: 0.4; }
-  50% { transform: translateY(-8px); opacity: 0.6; }
-}
-
-.intro-splash.fade-out {
+.intro-splash--leaving {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
 
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 10;
-}
-
-.gengar-container {
-  position: relative;
-  width: 220px;
-  height: 220px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 2rem;
-  animation: float 3s ease-in-out infinite;
-}
-
-.gengar-main-layer {
-  position: relative;
-  width: 100%;
-  height: auto;
-  z-index: 2;
-  filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.5));
-  margin-top: -1.68rem;
-}
-
-.gengar-aura-layer {
-  position: absolute;
-  margin-top: -1.8rem;
-  left: 0;
-  width: 97%;
-  height: 130%;
-  z-index: 1;
-  filter: url(#electric-aura) brightness(1.5);
-  opacity: 0.9;
-  transform: scale(1.12);
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-}
-
-.splash-title {
-  font-size: 3.5rem;
-  margin: -1rem;
-  margin-top: -2rem;
-  letter-spacing: -2px;
-  line-height: 1;
-  text-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
-
-.ritzy-text { 
-  color: #fff; 
-  font-weight: 800; 
-  letter-spacing: 0.09rem;
-}
-
-.store-text {
-  background: linear-gradient(135deg, #d946ef, #7c3aed);
-  -webkit-background-clip: text; 
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-weight: 900;
-  position: relative;
-  letter-spacing: -0.1rem;
-}
-
-.loading-container {
-  width: 400px;
-  height: 80px;
-  margin-top: 3rem;
+.intro-content {
+  width: min(480px, calc(100% - 2rem));
+  display: grid;
+  justify-items: center;
   text-align: center;
 }
 
-.loading-track-modern {
-  width: 100%;
-  height: 20px;
-  background: rgba(82, 81, 81, 0.808);
-  backdrop-filter: blur(6px);
-  border-radius: 12px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(146, 51, 234, 0.089);
+.intro-gengar-shell {
+  width: 330px;
+  height: 285px;
+  display: grid;
+  place-items: center;
 }
 
-.loading-fill-modern {
+.intro-outline {
+  width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, #d946ef, #9333ea);
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: width 0.15s ease;
-  position: relative;
+  overflow: visible;
+  color: #ffffff;
 }
 
-.loading-percent {
-  color: white;
-  font-size: 0.85rem;
-  font-family: monospace;
-  font-weight: bold;
-  text-shadow: 0 0 10px rgba(255,255,255,0.5);
+.gengar-outline--animated .gengar-contour {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: introTrace 1050ms cubic-bezier(0.5, 0, 0.2, 1) 80ms forwards;
 }
 
-.loading-text {
-  margin-top: 0.8rem;
-  font-size: 0.9rem;
-  color: #a8a7a7;
-  letter-spacing: 2px;
-  font-weight: 700;
+.gengar-outline--animated .gengar-eye {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: introEyesIn 360ms cubic-bezier(0.2, 0.9, 0.25, 1) 670ms forwards;
 }
 
-.developer-credits {
-  position: absolute;
-  bottom: -4.2rem;
-  font-size: 1rem;
-  color: #efeff0;
-  font-family: "Oxanium", sans-serif;
-  text-align: center;
-  max-width: 90%;
+.gengar-outline--animated .gengar-eye--left { transform: translateX(-16px) scale(0.72); }
+.gengar-outline--animated .gengar-eye--right { transform: translateX(16px) scale(0.72); }
+
+.intro-content h1 {
+  margin: 0.1rem 0 0;
+  font-family: 'Sora', 'Manrope', sans-serif;
+  font-size: clamp(2.45rem, 8vw, 3.65rem);
+  font-weight: 800;
+  letter-spacing: -0.065em;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: introNameIn 380ms 720ms ease-out forwards;
 }
 
-.credits-text {
-  margin: 0;
-  white-space: nowrap;
+.intro-content h1 span { color: #c240ff; }
+
+.intro-progress {
+  width: min(320px, 76vw);
+  height: 6px;
+  margin-top: 1.25rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
 }
 
-.owner-name { 
-  color: #e5e7eb; 
-  font-weight: 900; 
+.intro-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #6d00ff, #cc2cff, #ffffff);
+  transform-origin: left;
+  animation: introLoad var(--intro-hold-duration, 2200ms) linear both;
 }
 
-.flag { 
-  font-size: 1.2rem; 
-}
+@keyframes introTrace { to { stroke-dashoffset: 0; } }
+@keyframes introEyesIn { to { opacity: 1; transform: translateX(0) scale(1.24); } }
+@keyframes introLoad { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes introNameIn { to { opacity: 1; transform: none; } }
 
-@media (max-width: 480px) {
-  .gengar-container { width: 220px; height: 220px; }
-  .splash-title { font-size: 2.5rem; }
-  .loading-container { width: 240px; }
-  
-  .developer-credits {
-    font-size: 0.75rem;
-    bottom: -5rem;
-  }
-  
-  .credits-text {
-    white-space: normal;
-  }
-  
-  .background-decorations {
-    opacity: 0.06;
-  }
-}
-
-/* En tu index.css, App.css o layout global */
-body, #root, .App {
-  background: #0f1014 !important;
-}
-@keyframes homeFadeIn {
-  0% {
-    opacity: 0;
-    transform: scale(1.01);
-    filter: blur(6px);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-    filter: blur(0px);
-  }
+@media (max-width: 520px) {
+  .intro-gengar-shell { width: 270px; height: 235px; }
+  .intro-content h1 { font-size: clamp(2.2rem, 12vw, 3rem); }
 }

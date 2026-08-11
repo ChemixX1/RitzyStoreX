@@ -1,105 +1,119 @@
-import { useState, useEffect, useRef } from "react";
-import { createPortal } from "react-dom"; 
-import { Home, Gamepad2, Mail } from "lucide-react"; 
-import "../styles/Header.css";
+import { useEffect, useState } from 'react';
+import { Menu, X } from 'lucide-react';
+import BrandIcon from './BrandIcon';
+import GengarOutline from './GengarOutline';
+import '../styles/Header.css';
 
-const Header = () => {
-  const [active, setActive] = useState("inicio");
-  const isManualScroll = useRef(false);
-  const timeoutRef = useRef(null);
+const navigation = [
+  { id: 'inicio', label: 'Inicio' },
+  { id: 'servicios', label: 'Plataformas' },
+  { id: 'contacto', label: 'Contacto' },
+];
+
+const leftNavigation = navigation.slice(0, 2);
+const rightNavigation = navigation.slice(2);
+
+export default function Header() {
+  const [active, setActive] = useState('inicio');
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (isManualScroll.current) return;
-
-      const scrollY = window.scrollY || document.documentElement.scrollTop;
-      const windowHeight = window.innerHeight;
-      const docHeight = document.documentElement.scrollHeight;
-
-      if ((windowHeight + scrollY) >= docHeight - 50) {
-        setActive("contacto");
-        return;
-      }
-
-      const scrollPosition = scrollY + 250; 
-      const sections = [
-        { id: "inicio" },
-        { id: "servicios" },
-        { id: "contacto" }
-      ];
-
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i].id);
-        if (section) {
-          if (scrollPosition >= section.offsetTop) {
-            setActive(sections[i].id);
-            break; 
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 36);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToSection = (id) => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    isManualScroll.current = true;
-    setActive(id); 
+  useEffect(() => {
+    const sections = navigation
+      .map(({ id }) => document.getElementById(id))
+      .filter(Boolean);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visible) setActive(visible.target.id);
+      },
+      { rootMargin: '-25% 0px -55% 0px', threshold: [0, 0.2, 0.5] },
+    );
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
 
-    const el = document.getElementById(id);
-    if (el) {
-      const headerOffset = 80; 
-      const elementPosition = el.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-  
-      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-
-      timeoutRef.current = setTimeout(() => {
-        isManualScroll.current = false;
-        timeoutRef.current = null;
-      }, 1200);
-    }
+  const goTo = (event, id) => {
+    event.preventDefault();
+    setActive(id);
+    setMenuOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // --- SOLUCIÓN: Usamos createPortal PERO SIN estilos inline conflictivos ---
-  // Dejamos que el archivo Header.css controle la posición (top)
-  return createPortal(
-    <header className="header">
-      <nav className="pill-nav">
-        
-        <button
-          className={`pill-item ${active === "inicio" ? "active" : ""}`}
-          onClick={() => scrollToSection("inicio")}
-        >
-          <Home size={18} className="nav-icon" /> 
-          <span>Inicio </span>
-        </button>
-
-        <button
-          className={`pill-item ${active === "servicios" ? "active" : ""}`}
-          onClick={() => scrollToSection("servicios")}
-        >
-          <Gamepad2 size={18} className="nav-icon" /> 
-          <span>Plataformas </span>
-        </button>
-
-        <button
-          className={`pill-item ${active === "contacto" ? "active" : ""}`}
-          onClick={() => scrollToSection("contacto")}
-        >
-          <Mail size={18} className="nav-icon" /> 
-          <span>Contacto </span>
-        </button>
-
-      </nav>
-    </header>,
-    document.body
+  const navLink = ({ id, label }) => (
+    <a
+      key={id}
+      className={active === id ? 'active' : ''}
+      href={`#${id}`}
+      aria-current={active === id ? 'page' : undefined}
+      onClick={(event) => goTo(event, id)}
+    >
+      {label}
+      <span className="nav-underline" aria-hidden="true" />
+    </a>
   );
-};
 
-export default Header;
+  return (
+    <header className={`site-header ${scrolled ? 'site-header--scrolled' : ''}`}>
+      <div className="header-glow" aria-hidden="true" />
+      <div className="header-surface">
+        <nav className="navbar" aria-label="Navegación principal">
+          <div className="nav-cluster nav-cluster--left">
+            {leftNavigation.map(navLink)}
+          </div>
+
+          <a className="navbar-brand" href="#inicio" onClick={(event) => goTo(event, 'inicio')}>
+            <GengarOutline className="brand-outline" showEyes />
+            <span className="brand-wordmark">Ritzy<span>StoreX</span></span>
+          </a>
+
+          <div className="nav-cluster nav-cluster--right">
+            {rightNavigation.map(navLink)}
+            <a
+              className="nav-contact"
+              href="https://wa.me/51955422937?text=Hola%20RitzyStoreX%2C%20quiero%20conocer%20las%20promociones%20disponibles."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Hablemos
+              <BrandIcon name="whatsapp" size={17} />
+            </a>
+          </div>
+
+          <button
+            className="nav-toggle"
+            type="button"
+            aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+            aria-expanded={menuOpen}
+            aria-controls="primary-navigation"
+            onClick={() => setMenuOpen((current) => !current)}
+          >
+            {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </nav>
+      </div>
+
+      <div id="primary-navigation" className={`mobile-nav ${menuOpen ? 'mobile-nav--open' : ''}`}>
+        {navigation.map(navLink)}
+        <a
+          className="mobile-contact"
+          href="https://wa.me/51955422937?text=Hola%20RitzyStoreX%2C%20quiero%20conocer%20las%20promociones%20disponibles."
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => setMenuOpen(false)}
+        >
+          Hablemos por WhatsApp
+        </a>
+      </div>
+    </header>
+  );
+}

@@ -1,162 +1,131 @@
-import React, { useEffect, useRef } from 'react';
+import { Gamepad2 } from 'lucide-react';
+import BrandIcon from './BrandIcon';
 import '../styles/Hero.css';
-import TypewriterBox from './TypewriterBox';
-import gengarImage from '../assets/logos/gengar3.png';
-import Particles from './Particles';
 
-const Hero = () => {
-  const heroRef = useRef(null);
+const heroTiles = [
+  '/assets/logos/cards/canva.webp',
+  '/assets/logos/cards/hbo.webp',
+  '/assets/logos/cards/tiktok.webp',
+  '/assets/logos/cards/netflix.webp',
+  '/assets/logos/cards/disney.webp',
+  '/assets/logos/cards/duolingo.webp',
+  '/assets/logos/cards/chatgpt.webp',
+  '/assets/logos/cards/instagram.webp',
+  '/assets/logos/cards/paramount.webp',
+  '/assets/logos/cards/crunchyroll.webp',
+  '/assets/logos/cards/roblox.webp',
+  '/assets/logos/cards/perplexity.webp',
+  '/assets/logos/cards/facebook.webp',
+  '/assets/logos/cards/capcut.webp',
+];
 
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      if (!heroRef.current) return;
-      const { left, top } = heroRef.current.getBoundingClientRect();
-      const x = e.clientX - left;
-      const y = e.clientY - top;
-      heroRef.current.style.setProperty('--mouse-x', `${x}px`);
-      heroRef.current.style.setProperty('--mouse-y', `${y}px`);
-    };
+const floatDirections = [-4, 3, 5, -2, 4, -5, 2];
+const tileFloatStyles = heroTiles.map((_, index) => {
+  const rotation = ((index % 5) - 2) * 0.22;
 
-    const heroElement = heroRef.current;
-    if (heroElement) {
-      heroElement.addEventListener('mousemove', handleMouseMove);
-    }
+  return {
+    '--float-x': `${floatDirections[index % floatDirections.length]}px`,
+    '--float-y': `${-(6 + (index % 5))}px`,
+    '--float-rotate-start': `${rotation}deg`,
+    '--float-rotate-end': `${rotation * -1.25}deg`,
+    '--float-duration': `${(4.35 + index * 0.17).toFixed(2)}s`,
+    '--float-delay': `${-(0.45 + index * 0.57).toFixed(2)}s`,
+  };
+});
 
-    return () => {
-      if (heroElement) {
-        heroElement.removeEventListener('mousemove', handleMouseMove);
-      }
-    };
-  }, []);
+export default function Hero() {
+  const handleTilePointerMove = (event) => {
+    if (event.pointerType === 'touch') return;
+
+    const tile = event.currentTarget;
+    const bounds = tile.getBoundingClientRect();
+    const pointerX = Math.min(Math.max((event.clientX - bounds.left) / bounds.width, 0), 1);
+    const pointerY = Math.min(Math.max((event.clientY - bounds.top) / bounds.height, 0), 1);
+
+    tile.style.setProperty('--pointer-x', `${pointerX * 100}%`);
+    tile.style.setProperty('--pointer-y', `${pointerY * 100}%`);
+    tile.style.setProperty('--hover-rotate-x', `${(0.5 - pointerY) * 7}deg`);
+    tile.style.setProperty('--hover-rotate-y', `${(pointerX - 0.5) * 7}deg`);
+  };
+
+  const handleTilePointerLeave = (event) => {
+    const tile = event.currentTarget;
+    tile.style.setProperty('--pointer-x', '50%');
+    tile.style.setProperty('--pointer-y', '50%');
+    tile.style.setProperty('--hover-rotate-x', '0deg');
+    tile.style.setProperty('--hover-rotate-y', '0deg');
+  };
 
   return (
-    <section id="inicio" className="gengar-hero" ref={heroRef}>
-      <div className="particles-bg-container">
-        <Particles
-          particleColors={['#ffffff', '#ffffff']}
-          particleCount={100}
-          particleSpread={10}
-          speed={0.2}
-          particleBaseSize={100}
-          moveParticlesOnHover={false}
-          alphaParticles={true}
-          disableRotation={false}
-        />
+    <section id="inicio" className="hero-section">
+      <img
+        className="hero-space-image"
+        src="/assets/backgrounds/space-hero.webp"
+        alt=""
+        width="1536"
+        height="1024"
+        decoding="async"
+        fetchPriority="high"
+      />
+
+      <div className="hero-mosaic" aria-hidden="true">
+        {heroTiles.map((logo, index) => (
+          <div
+            className={`mosaic-float mosaic-float--${index + 1}`}
+            key={`${logo}-${index}`}
+            style={tileFloatStyles[index]}
+          >
+            <div
+              className={`mosaic-tile mosaic-tile--${index + 1}`}
+              onPointerMove={handleTilePointerMove}
+              onPointerLeave={handleTilePointerLeave}
+            >
+              <img src={logo} alt="" width="180" height="180" decoding="async" />
+            </div>
+          </div>
+        ))}
       </div>
 
-      <div className="hero-lightning-lines">
-        <svg viewBox="0 0 1440 800" fill="none" preserveAspectRatio="xMidYMid slice">
-          <path d="M-100 0L200 800" stroke="#a855f7" strokeWidth="1" opacity="0.15"/>
-          <path d="M1300 0L1100 800" stroke="#a855f7" strokeWidth="1.5" opacity="0.2"/>
-          <path d="M400 100 L600 300 L500 400 L800 700" stroke="#a855f7" strokeWidth="1" opacity="0.1" fill="none"/>
-        </svg>
-      </div>
+      <div className="hero-space-overlay" aria-hidden="true" />
+      <div className="hero-noise" aria-hidden="true" />
 
-      <div className="gengar-bg-container-hero">
-        <img src={gengarImage} alt="" className="gengar-bg-image-hero" />
-      </div>
-
-      <div className="hero-split-container">
-        <div className="hero-content-left">
-          <h1 className="gengar-title">
-            Bienvenido a <br />
-            <span className="ritzy-text">Ritzy</span>
-            <span className="store-text">StoreX</span>
+      <div className="hero-shell">
+        <div className="hero-copy">
+          <h1>
+            <span className="hero-title-line">Las plataformas</span>
+            <span className="hero-title-line">que amas a un precio</span>
+            <span className="hero-title-line hero-title-accent">que te encantará</span>
           </h1>
 
-          <p className="hero-brief">
-            Deje de pagar de más. Le ofrezco una solución que reúne entretenimiento en HD,
-            herramientas de productividad y un impulso para su presencia social, todo en un solo lugar.
-            Acceso Premium por una fracción del costo, respaldado por mi Garantía de Servicio.
+          <p className="hero-description">
+            Streaming, herramientas Pro, inteligencia artificial y gaming en un solo lugar,
+            con una experiencia simple.
           </p>
 
-          <TypewriterBox text="Deeveloper: GeanFranco Calle Silva" />
-        </div>
-
-        <div className="hero-visual-right">
-
-          <div className="phantom-hub-container">
-            <div className="shadow-core"></div>
-
-            <div className="ghost-card floating-1">
-              <div className="card-icon icon-purple">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" strokeWidth="2">
-                  <path d="M8 5v14l11-7-11-7z" />
-                </svg>
-              </div>
-              <div className="card-info">
-                <h4>Streaming</h4>
-                <p>Calidad 4K</p>
-              </div>
-            </div>
-
-            <div className="ghost-card floating-2">
-              <div className="card-icon icon-pink">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
-                </svg>
-              </div>
-              <div className="card-info">
-                <h4>Boost Social</h4>
-                <p>Autoridad Real</p>
-              </div>
-            </div>
-            <div className="ghost-card floating-3">
-              <div className="card-icon icon-blue">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" strokeWidth="2">
-                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-                  <line x1="2" y1="15" x2="22" y2="15" />
-                  <path d="M7 19h10" />
-                </svg>
-              </div>
-              <div className="card-info">
-                <h4>Herramientas</h4>
-                <p>Licencias Pro</p>
-              </div>
-            </div>
+          <div className="hero-actions">
+            <a className="primary-action" href="#servicios">
+              Ver plataformas
+              <Gamepad2 size={20} strokeWidth={2.2} />
+            </a>
+            <a
+              className="secondary-action"
+              href="https://wa.me/51955422937?text=Hola%20RitzyStoreX%2C%20quiero%20información%20sobre%20sus%20servicios."
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <BrandIcon name="whatsapp" size={19} />
+              Hablar por WhatsApp
+            </a>
           </div>
 
-
-          <div className="hero-value-proposition">
-            <div className="holo-chips-container">
-
-
-              <div className="holo-chip">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" strokeWidth="2">
-                  <path d="M5 11V7a5 5 0 1 1 10 0" />
-                  <rect x="3" y="11" width="18" height="11" rx="2" />
-                </svg>
-                Acceso total
-              </div>
-              <div className="holo-chip">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" strokeWidth="2">
-                  <path d="M12 1v22" />
-                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                </svg>
-                Máximo ahorro
-              </div>
-              <div className="holo-chip">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" strokeWidth="2">
-                  <path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z" />
-                  <path d="M9 12l2 2 4-4" />
-                </svg>
-                Cero riesgos
-              </div>
-
-            </div>
+          <div className="owner-signature">
+            <small>Developer</small>
+            <strong>JOSE MANUEL MEJIA MEDINA</strong>
           </div>
-
         </div>
-
       </div>
+
+      <div className="hero-bottom-fade" aria-hidden="true" />
     </section>
   );
-};
-
-export default Hero;
+}

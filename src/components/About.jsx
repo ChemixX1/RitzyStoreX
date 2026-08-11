@@ -1,69 +1,47 @@
-import React from 'react';
 import '../styles/About.css';
-import disneyLogo from '../assets/logos/disney.png';
-import netflixLogo from '../assets/logos/netflix.png';
-import crunchyrollLogo from '../assets/logos/crunchyroll.png';
-import perplexityLogo from '../assets/logos/perplexity.png';
-import paramountLogo from '../assets/logos/paramount.png';
-import hboLogo from '../assets/logos/hbo.png';
-import tiktokLogo from '../assets/logos/tiktok.png';
-import robloxLogo from '../assets/logos/roblox.png';
-import duolingoLogo from '../assets/logos/duolingo.png';
-import gptLogo from '../assets/logos/chatgpt.png';
-import canvaLogo from '../assets/logos/canva.png';
 
-const About = () => {
-  const brands = [
-    { name: 'Netflix',      img: netflixLogo },
-    { name: 'Disney+',      img: disneyLogo },
-    { name: 'HBO Max',      img: hboLogo },
-    { name: 'Paramount+',   img: paramountLogo },
-    { name: 'Crunchyroll',  img: crunchyrollLogo },
-    { name: 'ChatGPT',      img: gptLogo },
-    { name: 'Perplexity',   img: perplexityLogo },
-    { name: 'Canva',        img: canvaLogo },
-    { name: 'Duolingo',     img: duolingoLogo },
-    { name: 'TikTok',       img: tiktokLogo },
-    { name: 'Roblox',       img: robloxLogo },
-  ];
+const brands = [
+  { name: 'Netflix', img: '/assets/logos/marquee/netflix.webp' },
+  { name: 'Disney+', img: '/assets/logos/marquee/disney.webp' },
+  { name: 'HBO Max', img: '/assets/logos/marquee/hbo.webp' },
+  { name: 'Paramount+', img: '/assets/logos/marquee/paramount.webp' },
+  { name: 'Crunchyroll', img: '/assets/logos/marquee/crunchyroll.webp' },
+  { name: 'ChatGPT', img: '/assets/logos/marquee/chatgpt.webp' },
+  { name: 'Perplexity', img: '/assets/logos/marquee/perplexity.webp' },
+  { name: 'Canva', img: '/assets/logos/marquee/canva.webp' },
+  { name: 'Duolingo', img: '/assets/logos/marquee/duolingo.webp' },
+  { name: 'TikTok', img: '/assets/logos/marquee/tiktok.webp' },
+  { name: 'Roblox', img: '/assets/logos/marquee/roblox.webp' },
+];
 
+function BrandGroup({ duplicate = false }) {
   return (
-    <section className="brands-marquee">
-      <div className="marquee-wrapper">
-        <div className="fade-overlay fade-left"></div>
-        
-        <div className="marquee-track">
-          
-          <div className="marquee-group">
-            {brands.map((brand, index) => (
-              <div key={`g1-${index}`} className="brand-item">
-                <img src={brand.img} alt={brand.name} className="brand-image" />
-              </div>
-            ))}
-          </div>
-
-          <div className="marquee-group">
-            {brands.map((brand, index) => (
-              <div key={`g2-${index}`} className="brand-item">
-                <img src={brand.img} alt={brand.name} className="brand-image" />
-              </div>
-            ))}
-          </div>
-
-           <div className="marquee-group">
-            {brands.map((brand, index) => (
-              <div key={`g3-${index}`} className="brand-item">
-                <img src={brand.img} alt={brand.name} className="brand-image" />
-              </div>
-            ))}
-          </div>
-
+    <div className="brand-group" aria-hidden={duplicate || undefined}>
+      {brands.map((brand) => (
+        <div className="brand-chip" key={brand.name}>
+          <img
+            src={brand.img}
+            alt={duplicate ? '' : brand.name}
+            width="132"
+            height="72"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
+      ))}
+    </div>
+  );
+}
 
-        <div className="fade-overlay fade-right"></div>
+export default function About() {
+  return (
+    <section className="brands-marquee" aria-label="Plataformas destacadas">
+      <div className="marquee-window">
+        <div className="marquee-track">
+          <BrandGroup />
+          <BrandGroup duplicate />
+        </div>
       </div>
     </section>
   );
-};
-
-export default About;
+}
