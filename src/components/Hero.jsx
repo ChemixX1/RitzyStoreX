@@ -126,7 +126,7 @@ export default function Hero() {
             </a>
             <a
               className="secondary-action"
-              href="https://wa.me/51955422937?text=Hola%20RitzyStoreX%2C%20quiero%20información%20sobre%20sus%20servicios."
+              href="https://wa.me/51931189299?text=Hola%20RitzyStoreX%2C%20quiero%20información%20sobre%20sus%20servicios."
               target="_blank"
               rel="noopener noreferrer"
             >

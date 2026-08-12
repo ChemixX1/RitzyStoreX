@@ -310,11 +310,22 @@
   pointer-events: none;
 }
 
+/* Los precios conservan una silueta mas suave durante la grabacion. */
+.video-capture-mask.price-capture-mask {
+  color: rgba(211, 92, 255, 0.42) !important;
+  filter: blur(3.2px);
+  opacity: 0.62;
+}
+
+.video-capture-mask.price-capture-mask::after {
+  display: none;
+}
+
 /* En el hero conserva una silueta tipografica sutil, sin mostrar el texto. */
 .video-capture-mask.hero-price-mask {
   color: rgba(255, 255, 255, 0.32) !important;
-  filter: blur(7px);
-  opacity: 0.52;
+  filter: blur(4.5px);
+  opacity: 0.58;
 }
 
 .video-capture-mask.hero-price-mask::after {

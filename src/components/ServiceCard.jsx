@@ -78,11 +78,11 @@ export default function ServiceCard({ service }) {
   };
 
   const handleBuyWhatsApp = () => {
-    window.open(`https://wa.me/51955422937?text=${encodeURIComponent(getMessage())}`, '_blank', 'noopener,noreferrer');
+    window.open(`https://wa.me/51931189299?text=${encodeURIComponent(getMessage())}`, '_blank', 'noopener,noreferrer');
   };
 
   const handleBuyTelegram = () => {
-    window.open(`https://t.me/Ritzytoe?text=${encodeURIComponent(getMessage())}`, '_blank', 'noopener,noreferrer');
+    window.open(`https://t.me/ChemixX7?text=${encodeURIComponent(getMessage())}`, '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -129,7 +129,7 @@ export default function ServiceCard({ service }) {
               <span className="card-rating"><Star size={13} fill="currentColor" /> {ratings[service.id % ratings.length]}</span>
             </span>
             <span
-              className={`card-price${VIDEO_CAPTURE_MODE ? ' video-capture-mask' : ''}`}
+              className={`card-price${VIDEO_CAPTURE_MODE ? ' video-capture-mask price-capture-mask' : ''}`}
               aria-label={VIDEO_CAPTURE_MODE ? 'Informacion temporalmente oculta' : undefined}
             >
               <small>Desde</small> {service.priceStart}
@@ -187,7 +187,7 @@ export default function ServiceCard({ service }) {
                     onClick={() => setSelectedOption(option)}
                   >
                     <span className={VIDEO_CAPTURE_MODE ? 'video-capture-mask' : undefined}>{option.label}</span>
-                    <strong className={VIDEO_CAPTURE_MODE ? 'video-capture-mask' : undefined}>{option.price}</strong>
+                    <strong className={VIDEO_CAPTURE_MODE ? 'video-capture-mask price-capture-mask' : undefined}>{option.price}</strong>
                   </button>
                 ))}
               </div>
@@ -208,7 +208,7 @@ export default function ServiceCard({ service }) {
                     <BrandIcon name="telegram" className="purchase-brand-logo" />
                     <span>Telegram</span>
                   </button>
-                  <a className="purchase-channel-button purchase-channel-button--facebook" href="https://www.facebook.com/darktoe" target="_blank" rel="noopener noreferrer" aria-label="Contactar por Facebook">
+                  <a className="purchase-channel-button purchase-channel-button--facebook" href="https://www.facebook.com/jose.manuel.mejia.medina.2025?locale=es_LA" target="_blank" rel="noopener noreferrer" aria-label="Contactar por Facebook">
                     <BrandIcon name="facebook" className="purchase-brand-logo" />
                     <span>Facebook</span>
                   </a>

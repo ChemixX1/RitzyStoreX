@@ -80,7 +80,7 @@ export default function Header() {
             {rightNavigation.map(navLink)}
             <a
               className="nav-contact"
-              href="https://wa.me/51955422937?text=Hola%20RitzyStoreX%2C%20quiero%20conocer%20las%20promociones%20disponibles."
+              href="https://wa.me/51931189299?text=Hola%20RitzyStoreX%2C%20quiero%20conocer%20las%20promociones%20disponibles."
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -106,7 +106,7 @@ export default function Header() {
         {navigation.map(navLink)}
         <a
           className="mobile-contact"
-          href="https://wa.me/51955422937?text=Hola%20RitzyStoreX%2C%20quiero%20conocer%20las%20promociones%20disponibles."
+          href="https://wa.me/51931189299?text=Hola%20RitzyStoreX%2C%20quiero%20conocer%20las%20promociones%20disponibles."
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => setMenuOpen(false)}

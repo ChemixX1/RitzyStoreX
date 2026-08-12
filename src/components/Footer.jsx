@@ -5,13 +5,13 @@ import '../styles/Footer.css';
 const contactLinks = [
   {
     label: 'WhatsApp',
-    detail: '+51 955 422 937',
-    href: 'https://wa.me/51955422937?text=Hola%20RitzyStoreX%2C%20quiero%20conocer%20las%20plataformas%20y%20promociones%20disponibles.',
+    detail: '+51 931 189 299',
+    href: 'https://wa.me/51931189299?text=Hola%20RitzyStoreX%2C%20quiero%20conocer%20las%20plataformas%20y%20promociones%20disponibles.',
     icon: BrandIcon,
   },
-  { label: 'Telegram', detail: '@Ritzytoe', href: 'https://t.me/Ritzytoe', icon: Send },
-  { label: 'Instagram', detail: '@dark_toe', href: 'https://www.instagram.com/dark_toe/', icon: Instagram },
-  { label: 'Facebook', detail: '/darktoe', href: 'https://www.facebook.com/darktoe', icon: Facebook },
+  { label: 'Telegram', detail: '@ChemixX7', href: 'https://t.me/ChemixX7', icon: Send },
+  { label: 'Instagram', detail: '@j0semanuelmejia', href: 'https://www.instagram.com/j0semanuelmejia/', icon: Instagram },
+  { label: 'Facebook', detail: 'Jose Manuel Mejia Medina', href: 'https://www.facebook.com/jose.manuel.mejia.medina.2025?locale=es_LA', icon: Facebook },
 ];
 
 export default function Footer() {
@@ -26,7 +26,7 @@ export default function Footer() {
             <p>Escríbeme y encuentra la opción que mejor se adapta a lo que necesitas.</p>
           </div>
           <a
-            href="https://wa.me/51955422937?text=Hola%20RitzyStoreX%2C%20quiero%20recibir%20asesoría."
+            href="https://wa.me/51931189299?text=Hola%20RitzyStoreX%2C%20quiero%20recibir%20asesoría."
             target="_blank"
             rel="noopener noreferrer"
           >
