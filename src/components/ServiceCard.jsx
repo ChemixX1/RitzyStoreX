@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ArrowUpRight, Star, X } from 'lucide-react';
 import BrandIcon from './BrandIcon';
+import { getCaptureSafeServiceName, VIDEO_CAPTURE_MODE } from '../videoCapture';
 import '../styles/ServiceCard.css';
 
 const ratings = ['5.0', '4.9', '5.0', '4.8', '4.9', '5.0', '4.9'];
@@ -15,6 +16,7 @@ export default function ServiceCard({ service }) {
   const [isPreviewing, setIsPreviewing] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
   const dialogTitleId = `service-title-${service.id}`;
+  const displayName = getCaptureSafeServiceName(service.name);
 
   useEffect(() => {
     if (!service.videoSrc || !cardRef.current) return undefined;
@@ -70,8 +72,8 @@ export default function ServiceCard({ service }) {
 
   const getMessage = () => {
     const selection = selectedOption
-      ? `${service.name} — ${selectedOption.label} (${selectedOption.price})`
-      : service.name;
+      ? `${displayName} — ${selectedOption.label} (${selectedOption.price})`
+      : displayName;
     return `Hola RitzyStoreX. Estoy interesado en ${selection}. ¿Podrías brindarme más información?`;
   };
 
@@ -123,10 +125,15 @@ export default function ServiceCard({ service }) {
 
           <span className="card-details">
             <span className="card-title-row">
-              <span className="card-title">{service.name}</span>
+              <span className="card-title">{displayName}</span>
               <span className="card-rating"><Star size={13} fill="currentColor" /> {ratings[service.id % ratings.length]}</span>
             </span>
-            <span className="card-price"><small>Desde</small> {service.priceStart}</span>
+            <span
+              className={`card-price${VIDEO_CAPTURE_MODE ? ' video-capture-mask' : ''}`}
+              aria-label={VIDEO_CAPTURE_MODE ? 'Informacion temporalmente oculta' : undefined}
+            >
+              <small>Desde</small> {service.priceStart}
+            </span>
           </span>
         </button>
       </article>
@@ -157,7 +164,7 @@ export default function ServiceCard({ service }) {
                   poster={service.logo}
                 />
               ) : (
-                <img src={service.logo} alt={service.name} className="modal-media" width="520" height="520" />
+                <img src={service.logo} alt={displayName} className="modal-media" width="520" height="520" />
               )}
               <div className="modal-preview-shade" />
               <span className="modal-category">{service.category}</span>
@@ -165,7 +172,7 @@ export default function ServiceCard({ service }) {
 
             <div className="modal-content">
               <div>
-                <h2 id={dialogTitleId}>{service.name}</h2>
+                <h2 id={dialogTitleId}>{displayName}</h2>
                 <p className="modal-description">{service.description}</p>
               </div>
 
@@ -179,14 +186,19 @@ export default function ServiceCard({ service }) {
                     aria-pressed={selectedOption?.label === option.label}
                     onClick={() => setSelectedOption(option)}
                   >
-                    <span>{option.label}</span>
-                    <strong>{option.price}</strong>
+                    <span className={VIDEO_CAPTURE_MODE ? 'video-capture-mask' : undefined}>{option.label}</span>
+                    <strong className={VIDEO_CAPTURE_MODE ? 'video-capture-mask' : undefined}>{option.price}</strong>
                   </button>
                 ))}
               </div>
 
               <div className="purchase-area">
-                <p>Consulta y compra por tu canal preferido</p>
+                <p
+                  className={VIDEO_CAPTURE_MODE ? 'video-capture-mask' : undefined}
+                  aria-label={VIDEO_CAPTURE_MODE ? 'Informacion temporalmente oculta' : undefined}
+                >
+                  Consulta y compra por tu canal preferido
+                </p>
                 <div className="purchase-actions">
                   <button type="button" className="purchase-channel-button purchase-channel-button--whatsapp" onClick={handleBuyWhatsApp}>
                     <BrandIcon name="whatsapp" className="purchase-brand-logo" />

@@ -1,6 +1,7 @@
 import { Search } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import ServiceCard from './ServiceCard';
+import LightRays from './LightRays';
 import { servicesData } from '../data/servicesData';
 import '../styles/ServiceCard.css';
 
@@ -21,6 +22,22 @@ export default function ServicesGrid() {
 
   return (
     <section id="servicios" className="services-section">
+      <LightRays
+        raysOrigin="top-center"
+        raysColor="#ffffff"
+        raysSpeed={1}
+        lightSpread={0.5}
+        rayLength={3}
+        followMouse={true}
+        mouseInfluence={0.1}
+        noiseAmount={0}
+        distortion={0}
+        className="services-light-rays"
+        pulsating={false}
+        fadeDistance={1}
+        saturation={1}
+      />
+
       <div className="services-heading">
         <h2>Encuentra tu plataforma favorita</h2>
         <p>Elige una categoría, compara opciones y consulta directamente en segundos.</p>

@@ -1,5 +1,7 @@
 import { Gamepad2 } from 'lucide-react';
 import BrandIcon from './BrandIcon';
+import LightPillar from './LightPillar';
+import { VIDEO_CAPTURE_MODE } from '../videoCapture';
 import '../styles/Hero.css';
 
 const heroTiles = [
@@ -58,15 +60,22 @@ export default function Hero() {
 
   return (
     <section id="inicio" className="hero-section">
-      <img
-        className="hero-space-image"
-        src="/assets/backgrounds/space-hero.webp"
-        alt=""
-        width="1536"
-        height="1024"
-        decoding="async"
-        fetchPriority="high"
-      />
+      <div className="hero-light-pillar" aria-hidden="true">
+        <LightPillar
+          topColor="#c31990"
+          bottomColor="#6c00d3"
+          intensity={1}
+          rotationSpeed={0.3}
+          glowAmount={0.002}
+          pillarWidth={3}
+          pillarHeight={0.3}
+          noiseIntensity={0.5}
+          pillarRotation={25}
+          interactive={false}
+          mixBlendMode="screen"
+          quality="high"
+        />
+      </div>
 
       <div className="hero-mosaic" aria-hidden="true">
         {heroTiles.map((logo, index) => (
@@ -93,7 +102,15 @@ export default function Hero() {
         <div className="hero-copy">
           <h1>
             <span className="hero-title-line">Las plataformas</span>
-            <span className="hero-title-line">que amas a un precio</span>
+            <span className="hero-title-line">
+              que amas a un{' '}
+              <span
+                className={VIDEO_CAPTURE_MODE ? 'hero-price-mask video-capture-mask' : undefined}
+                aria-label={VIDEO_CAPTURE_MODE ? 'Informacion temporalmente oculta' : undefined}
+              >
+                precio
+              </span>
+            </span>
             <span className="hero-title-line hero-title-accent">que te encantará</span>
           </h1>
 

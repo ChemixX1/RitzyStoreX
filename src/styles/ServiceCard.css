@@ -4,14 +4,13 @@
   contain-intrinsic-size: auto 1200px;
   padding: clamp(4rem, 8vw, 7rem) max(1rem, calc((100vw - 1180px) / 2));
   overflow: hidden;
-  background:
-    radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.13), transparent 30%),
-    #06040d;
+  background: #06040d;
 }
 
 .services-section::before {
   content: '';
   position: absolute;
+  z-index: 1;
   inset: 0;
   opacity: 0.12;
   pointer-events: none;
@@ -24,7 +23,14 @@
 .catalog-toolbar,
 .services-grid {
   position: relative;
-  z-index: 1;
+  z-index: 4;
+}
+
+.services-section > .services-light-rays {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 3;
+  height: 600px;
 }
 
 .services-heading {
@@ -282,6 +288,39 @@
 .card-price { color: #d35cff; font-size: 0.9rem; font-weight: 800; }
 .card-price small { margin-right: 0.2rem; color: #777185; font-size: 0.64rem; font-weight: 600; text-transform: uppercase; }
 
+/* Mascara temporal para grabar el proyecto sin mostrar precios ni datos de los planes. */
+.video-capture-mask {
+  position: relative;
+  isolation: isolate;
+  color: transparent !important;
+  text-shadow: none !important;
+  user-select: none;
+}
+
+.video-capture-mask::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 20% -0.12rem;
+  border: 1px solid rgba(211, 92, 255, 0.25);
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(15, 10, 24, 0.98), rgba(116, 40, 169, 0.82), rgba(15, 10, 24, 0.98));
+  box-shadow: 0 0 10px rgba(174, 64, 255, 0.5);
+  filter: blur(2.6px);
+  pointer-events: none;
+}
+
+/* En el hero conserva una silueta tipografica sutil, sin mostrar el texto. */
+.video-capture-mask.hero-price-mask {
+  color: rgba(255, 255, 255, 0.32) !important;
+  filter: blur(7px);
+  opacity: 0.52;
+}
+
+.video-capture-mask.hero-price-mask::after {
+  display: none;
+}
+
 .no-results {
   grid-column: 1 / -1;
   min-height: 260px;
@@ -458,7 +497,10 @@
 }
 
 @media (max-width: 760px) {
-  .services-section { padding-inline: 0.75rem; }
+  .services-section {
+    padding-top: 3rem;
+    padding-inline: 0.75rem;
+  }
   .catalog-toolbar { grid-template-columns: 1fr; }
   .result-count { display: none; }
   .filters-wrapper { grid-column: auto; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
