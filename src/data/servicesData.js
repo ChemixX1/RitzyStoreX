@@ -7,7 +7,7 @@ export const servicesData = [
     logo: '/assets/logos/cards/netflix.webp',
     videoSrc: '/assets/videos/netflix.mp4',
     description: 'Disfruta series, películas y documentales en alta calidad desde una de las plataformas de entretenimiento más populares del mundo.',
-    options: [{ label: '1 perfil · 1 mes', price: 'S/ 12.00' }],
+    options: [{ label: '1 perfil —— 1 mes', price: 'S/ 12.00' }],
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export const servicesData = [
     logo: '/assets/logos/cards/hbo.webp',
     videoSrc: '/assets/videos/hbo.mp4',
     description: 'Accede a grandes producciones, películas, documentales y series reconocidas en una experiencia de entretenimiento premium.',
-    options: [{ label: '1 perfil · 1 mes', price: 'S/ 12.00' }],
+    options: [{ label: '1 perfil —— 1 mes', price: 'S/ 12.00' }],
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ export const servicesData = [
     logo: '/assets/logos/cards/disney.webp',
     videoSrc: '/assets/videos/disney.mp4',
     description: 'Encuentra historias de Disney, Pixar, Marvel, Star Wars y mucho más para disfrutar en cualquier momento.',
-    options: [{ label: '1 perfil · 1 mes', price: 'S/ 12.00' }],
+    options: [{ label: '1 perfil —— 1 mes', price: 'S/ 12.00' }],
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ export const servicesData = [
     logo: '/assets/logos/cards/paramount.webp',
     videoSrc: '/assets/videos/paramount.mp4',
     description: 'Acción, comedia, clásicos y producciones exclusivas para ampliar tus opciones de entretenimiento.',
-    options: [{ label: '1 perfil · 1 mes', price: 'S/ 12.00' }],
+    options: [{ label: '1 perfil —— 1 mes', price: 'S/ 12.00' }],
   },
   {
     id: 5,
