@@ -47,7 +47,7 @@ export const servicesData = [
     logo: '/assets/logos/cards/crunchyroll.webp',
     videoSrc: '/assets/videos/crunchyroll.mp4',
     description: 'Anime en alta calidad, nuevos episodios y un amplio catálogo para quienes disfrutan las mejores historias de Japón.',
-    options: [{ label: '1 perfil · 1 mes', price: 'S/ 10.00' }],
+    options: [{ label: '1 perfil —— 1 mes', price: 'S/ 10.00' }],
   },
   {
     id: 6,
@@ -57,7 +57,7 @@ export const servicesData = [
     logo: '/assets/logos/cards/duolingo.webp',
     videoSrc: '/assets/videos/duolingo.mp4',
     description: 'Aprende idiomas sin anuncios y aprovecha funciones adicionales para mantener el ritmo de estudio.',
-    options: [{ label: '1 perfil · 1 mes', price: 'S/ 10.00' }],
+    options: [{ label: '1 perfil —— 1 mes', price: 'S/ 10.00' }],
   },
   {
     id: 7,
@@ -78,8 +78,8 @@ export const servicesData = [
     videoSrc: '',
     description: 'Diseña contenido con recursos premium, plantillas profesionales y herramientas que aceleran tu flujo creativo.',
     options: [
-      { label: '1 cuenta · 1 mes', price: 'S/ 10.00' },
-      { label: '1 cuenta · 1 año', price: 'S/ 70.00' },
+      { label: '1 cuenta —— 1 mes', price: 'S/ 10.00' },
+      { label: '1 cuenta —— 1 año', price: 'S/ 70.00' },
     ],
   },
   {
@@ -91,8 +91,8 @@ export const servicesData = [
     videoSrc: '/assets/videos/chatgpt.mp4',
     description: 'Potencia tus ideas, tareas y proyectos con herramientas avanzadas de inteligencia artificial para texto, imágenes y análisis.',
     options: [
-      { label: '1 cuenta · 1 mes', price: 'S/ 25.00' },
-      { label: '1 cuenta · 1 año', price: 'S/ 100.00' },
+      { label: '1 cuenta —— 1 mes', price: 'S/ 25.00' },
+      { label: '1 cuenta —— 1 año', price: 'S/ 100.00' },
     ],
   },
   {
@@ -103,19 +103,19 @@ export const servicesData = [
     logo: '/assets/logos/cards/perplexity.webp',
     videoSrc: '',
     description: 'Investiga con respuestas organizadas y fuentes visibles para encontrar información de forma rápida y eficiente.',
-    options: [{ label: '1 cuenta · 1 año', price: 'S/ 100.00' }],
+    options: [{ label: '1 cuenta —— 1 año', price: 'S/ 100.00' }],
   },
   {
     id: 11,
-    name: 'Roblox · Robux',
+    name: 'Roblox - Robux',
     category: 'Gaming',
     priceStart: 'S/ 25.00',
     logo: '/assets/logos/cards/roblox.webp',
     videoSrc: '/assets/videos/roblox.mp4',
     description: 'Amplía tu experiencia dentro de Roblox con opciones de Robux para personalizar tu avatar y acceder a contenido del juego.',
     options: [
-      { label: '1K Robux · vía grupo', price: 'S/ 25.00' },
-      { label: '1K Robux · Game Pass', price: 'S/ 27.00' },
+      { label: '1K Robux —— vía grupo', price: 'S/ 25.00' },
+      { label: '1K Robux —— Game Pass', price: 'S/ 27.00' },
     ],
   },
   {
